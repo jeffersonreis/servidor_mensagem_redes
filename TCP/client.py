@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from socket import *
-# server_name = "localhost"
-server_name = "150.162.244.37"
+
+server_name = "localhost"
+# server_name = "150.162.244.37"
 server_port = 9000
 
 print("Bem vindo ao Cliente TCP!\n")
@@ -13,7 +14,8 @@ if (s): server_name = s
 if (i): server_port = i
 
 try:
-    client_socket = socket(AF_INET, SOCK_STREAM)
+    # criar conexao com o servidor, atraves do ipv4 e tcp
+    client_socket = socket(AF_INET, SOCK_STREAM) 
     client_socket.connect((server_name, int(server_port)))
     print("Conexão estabelecida com o servidor!")
 except Exception as e:
@@ -42,7 +44,7 @@ while True:
             message = input("Entre com sua mensagem: ").encode('utf-8')
             try:
                 client_socket.send(message)
-                msg_receive = client_socket.recv(4096)
+                msg_receive = client_socket.recv(4096) # 4096 = maximo de bits
                 if msg_receive:
                     print("Mensagem enviada!")
                     print("Mensagem recebida do servidor: ", msg_receive.decode('utf-8'))

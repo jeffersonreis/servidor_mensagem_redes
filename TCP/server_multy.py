@@ -14,7 +14,7 @@ if (i): server_port = i
 
 serv = socket(AF_INET, SOCK_STREAM)
 serv.bind((server_name, int(server_port)))
-serv.listen(5)
+serv.listen(2)
 
 list_clients = []
 

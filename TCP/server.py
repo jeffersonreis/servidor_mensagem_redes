@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from socket import *
 
-server_name = "150.162.244.37"
+server_name = "localhost"
+# server_name = "150.162.244.37"
 server_port = 9000
 
 print("Bem vindo ao Servidor TCP!\n")
@@ -14,7 +15,7 @@ if (i): server_port = i
 
 serv = socket(AF_INET, SOCK_STREAM)
 serv.bind((server_name, int(server_port)))
-serv.listen(5)
+serv.listen(1)
 
 print('\nServidor aguardando!\n')
 conn, client_address = serv.accept()
