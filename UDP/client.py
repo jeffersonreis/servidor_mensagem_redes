@@ -3,17 +3,16 @@ from socket import *
 
 server_name = "150.162.244.37"
 server_port = 9000
-client_socket = socket(AF_INET, SOCK_DGRAM)
+# criamos um socket UDP Ipv4
+client_socket = socket(AF_INET, SOCK_DGRAM) 
 
 print("Bem-vindo ao Cliente UDP!\n")
 
 s = input("Entre com o IP do servidor (Enter para padrão): ")
 i = input("Entre com a porta (Enter para padrão): ")
 
-if s:
-    server_name = s
-if i:
-    server_port = int(i)
+if s: server_name = s
+if i: server_port = int(i)
 
 option_label = """
 Escolha uma dessas opções:
