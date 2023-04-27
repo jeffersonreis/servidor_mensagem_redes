@@ -16,7 +16,7 @@ serv = socket(AF_INET, SOCK_STREAM)
 serv.bind((server_name, int(server_port)))
 serv.listen(5)
 
-list_clients =[]
+list_clients = []
 
 for i in range(2):
     print('\nServidor aguardando!')

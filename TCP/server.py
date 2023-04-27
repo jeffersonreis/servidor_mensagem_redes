@@ -22,7 +22,7 @@ print(f"Conexão estabelecida com o endereço {client_address}")
 while True:
     try:
         data = conn.recv(4096)
-        print(f"Recebi a data: '{data.decode('utf-8')}'\n")
+        print(f"Recebi a data: '{data.decode('utf-8')}', de {client_address}\n")
         conn.sendall(b"Recebi sua mensagem!\n")
     except:
         print("Erro no servidor")
