@@ -14,7 +14,7 @@ if (s): server_name = s
 if (i): server_port = i
 
 serv = socket(AF_INET, SOCK_STREAM)
-serv.bind((server_name, server_port))
+serv.bind((server_name, int(server_port)))
 serv.listen(5)
 
 print('\nServidor aguardando!\n')

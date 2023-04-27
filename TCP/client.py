@@ -15,7 +15,7 @@ if (i): server_port = i
 
 try:
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect((server_name, server_port))
+    client_socket.connect((server_name, int(server_port)))
     print("Conexão estabelecida com o servidor!")
 except Exception as e:
     print("Erro ao conectar com o servidor!", e)
@@ -71,7 +71,6 @@ while True:
                     client_socket.send(message)
             except Exception as e:
                 print("Erro ao enviar/receber mensagem!", e)
-
 
     else:
         print("Opção Inválida!")
