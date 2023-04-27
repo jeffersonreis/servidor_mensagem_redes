@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 from socket import *
 
-server_name = "localhost"
+# server_name = "localhost"
+server_name = "192.168.0.103"
 server_port = 9000
 
 print("Bem vindo ao Servidor TCP!\n")
 
 s = input("Entre com o IP do servidor (Enter para localhost): ")
 i = input("Entre com a porta (Enter para padrão): ")
-c = input("Entre a quantidade de clientes: ")
-
 
 if (s): server_name = s
 if (i): server_port = i
@@ -20,20 +19,36 @@ serv.listen(5)
 
 list_clients =[]
 
-while c:
-    print('\nServidor aguardando!\n')
+for i in range(2):
+    print('\nServidor aguardando!')
     conn, client_address = serv.accept()
-    print(f"Conexão estabelecida com o endereço {client_address}")
-    list_clients.append(client_address)
+    conn.sendall(b"" + str(i).encode()) # informar seu numero
+    list_clients.append(conn)
+    print(f"Conexão estabelecida com Cliente {i + 1}: {client_address}")
 
-print("Finalizado: ", list_clients)
+print("\nTudo pronto!\n")
 
-# while True:
-#     try:
-#         data = conn.recv(4096)
-#         print(f"Recebi a data: '{data.decode('utf-8')}'\n")
-#         conn.sendto(b"Recebi sua mensagem!\n", client_address)
-#     except:
-#         print("Erro no servidor")
-#         conn.close()
-#         exit()
+while True:
+    try:
+        # Recebe dados do cliente 1
+        data = list_clients[0].recv(4096)
+        print(f"Recebi a data: '{data.decode('utf-8')}' do cliente 1")
+        
+        # Envia dados para o cliente 2
+        list_clients[1].sendall(data)
+        print(f"Enviei a data para o cliente 2")
+        
+        # Aguarda resposta do cliente 2
+        data = list_clients[1].recv(4096)
+        print(f"Recebi a data: '{data.decode('utf-8')}' do cliente 2")
+        
+        # Envia dados para o cliente 1
+        list_clients[0].sendall(data)
+        print(f"Enviei a data para o cliente 1")
+        
+    except Exception as e:
+        print("Erro no servidor")
+        print(e)
+        list_clients[0].close()
+        list_clients[1].close()
+        break

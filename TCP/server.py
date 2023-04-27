@@ -24,7 +24,7 @@ while True:
     try:
         data = conn.recv(4096)
         print(f"Recebi a data: '{data.decode('utf-8')}'\n")
-        conn.sendto(b"Recebi sua mensagem!\n", client_address)
+        conn.sendall(b"Recebi sua mensagem!\n")
     except:
         print("Erro no servidor")
         conn.close()

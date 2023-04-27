@@ -18,10 +18,10 @@ serv.bind((server_name,server_port))
 print('\nServidor aguardando!\n')
 
 while True:
-    try:
-      data, client_address = serv.recvfrom(4096)
-      print(f"Recebi a data: '{data.decode('utf-8')}' do endereço {client_address}\n")
-      serv.sendto(b"Recebi sua mensagem!\n", client_address)
-    except:
-       print("Error server")
-       exit()
+  try:
+    data, client_address = serv.recvfrom(4096)
+    print(f"Recebi a data: '{data.decode('utf-8')}' do endereço {client_address}\n")
+    serv.sendto(b"Recebi sua mensagem!\n", client_address)
+  except:
+    print("Error server")
+    exit()

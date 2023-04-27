@@ -40,17 +40,41 @@ while True:
         client_socket.close()
         exit()
 
-    elif option == "1": 
-        message = input("Entre com sua mensagem: ").encode('utf-8')
-        try:
-            client_socket.send(message)
-            msg_receive = client_socket.recv(4096)
-            if msg_receive:
-                print("Mensagem enviada!")
-                print("Mensagem recebida do servidor: ", msg_receive.decode('utf-8'))
-        except timeout:
-            print("Tempo limite excedido")
-        except Exception as e:
-            print("Erro ao enviar/receber mensagem!", e)
+    elif option == "1":
+        while True: 
+            message = input("Entre com sua mensagem: ").encode('utf-8')
+            try:
+                client_socket.send(message)
+                msg_receive = client_socket.recv(4096)
+                if msg_receive:
+                    print("Mensagem enviada!")
+                    print("Mensagem recebida do servidor: ", msg_receive.decode('utf-8'))
+            except timeout:
+                print("Tempo limite excedido")
+            except Exception as e:
+                print("Erro ao enviar/receber mensagem!", e)
+
+    elif option == "2":
+        msg_receive = client_socket.recv(4096)
+        num_client = int(msg_receive.decode('utf-8'))
+        print("Meu número cliente:\n", num_client + 1)
+        
+        while True:
+            try:
+                if (num_client == 0):
+                    message = input("Entre com sua mensagem: ").encode('utf-8')
+                    client_socket.send(message)
+                    msg_receive = client_socket.recv(4096)
+                    print("Cliente 2: ", msg_receive.decode('utf-8'))
+
+                if (num_client == 1):
+                    msg_receive = client_socket.recv(4096)
+                    print("Cliente 2: ", msg_receive.decode('utf-8'))
+                    message = input("Entre com sua mensagem: ").encode('utf-8')
+                    client_socket.send(message)
+            except Exception as e:
+                print("Erro ao enviar/receber mensagem!", e)
+
+
     else:
         print("Opção Inválida!")

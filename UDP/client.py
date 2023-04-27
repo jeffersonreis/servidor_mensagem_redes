@@ -17,9 +17,9 @@ try:
   client_socket.settimeout(timeout)
   print("Conexão estabelecida com o servidor!")
 except:
-    print("Erro ao conectar com o servidor!")
-    client_socket.close()
-    exit()
+  print("Erro ao conectar com o servidor!")
+  client_socket.close()
+  exit()
 
 option_label = """
 Escolha uma dessas opções:
@@ -45,8 +45,8 @@ while True:
         print("Mensagem enviada!")
         print("Mensagem recebida do servidor: ", msg_receive.decode('utf-8'))
     except socket.timeout:
-        print("Tempo limite excedido")
+      print("Tempo limite excedido")
     except Exception as e:
-        print("Erro ao enviar/receber mensagem!")
+      print("Erro ao enviar/receber mensagem!")
   else:
     print("Opção Inválida!")
