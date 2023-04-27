@@ -9,6 +9,7 @@ print("Bem-vindo ao Cliente UDP!\n")
 
 s = input("Entre com o IP do servidor (Enter para localhost): ")
 i = input("Entre com a porta (Enter para padrão): ")
+num_client = int(input("N cliente: "))
 
 if s:
     server_name = s
@@ -43,8 +44,8 @@ while True:
 
     elif option == "2":
         msg_receive, server_address = client_socket.recvfrom(4096)
-        num_client = int(msg_receive.decode('utf-8'))
-        print("Meu número cliente:", num_client + 1, "\n")
+        # num_client = int(msg_receive.decode('utf-8'))
+        # print("Meu número cliente:", num_client + 1, "\n")
         print("\nChat Iniciado!\n")
 
         while True:
