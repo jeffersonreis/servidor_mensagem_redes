@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from socket import *
 server_name = "localhost"
 server_port = 9000
