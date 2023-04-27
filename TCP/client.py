@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from socket import *
-server_name = "localhost"
+# server_name = "localhost"
+# server_name = "150.162.244.37"
+server_name = "192.168.0.103"
 server_port = 9000
 timeout = 10
 
@@ -17,22 +19,23 @@ try:
     client_socket.settimeout(timeout)
     client_socket.connect((server_name, server_port))
     print("Conexão estabelecida com o servidor!")
-except:
-    print("Erro ao conectar com o servidor!")
+except Exception as e:
+    print("Erro ao conectar com o servidor!", e)
     client_socket.close()
     exit()
 
 option_label = """
 Escolha uma dessas opções:
 
-1. Enviar uma mensagem
-2. Cancelar programa
+1. Enviar mensagem ao servidor
+2. Enviar mensagem a outro cliente
+3. Cancelar programa
 
 Sua escolha: """
 
 while True:
     option = input(option_label)
-    if option == "2":
+    if option == "3":
         print("Programa finalizado")
         client_socket.close()
         exit()

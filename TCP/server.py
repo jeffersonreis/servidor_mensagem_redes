@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from socket import *
 
-server_name = "localhost"
+# server_name = "localhost"
+server_name = "192.168.0.103"
 server_port = 9000
 
 print("Bem vindo ao Servidor TCP!\n")
@@ -23,7 +24,7 @@ while True:
     try:
         data = conn.recv(4096)
         print(f"Recebi a data: '{data.decode('utf-8')}'\n")
-        conn.sendall(b"Recebi sua mensagem!\n")
+        conn.sendto(b"Recebi sua mensagem!\n", client_address)
     except:
         print("Erro no servidor")
         conn.close()
