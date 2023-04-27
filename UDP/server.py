@@ -20,7 +20,7 @@ print('\nServidor aguardando!\n')
 while True:
     try:
         data, client_address = serv.recvfrom(4096)
-        print(f"Recebi a data: '{data.decode('utf-8')}'\n")
+        print(f"Recebi a data: '{data.decode('utf-8')}', de {client_address}\n")
         serv.sendto(b"Recebi sua mensagem!\n", client_address)
     except:
         print("Erro no servidor")
