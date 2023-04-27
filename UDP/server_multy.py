@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from socket import *
 
-# server_name = "localhost"
 server_name = "150.162.244.37"
 server_port = 9000
 
