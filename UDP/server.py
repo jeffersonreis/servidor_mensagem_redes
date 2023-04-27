@@ -2,12 +2,12 @@
 from socket import *
 
 # server_name = "localhost"
-server_name = "192.168.0.103"
+server_name = "150.162.244.37"
 server_port = 9000
 
 print("Bem vindo ao Servidor UDP!\n")
 
-s = input("Entre com o IP do servidor (Enter para localhost): ")
+s = input("Entre com o IP do servidor (Enter para padrão): ")
 i = input("Entre com a porta (Enter para padrão): ")
 
 if (s): server_name = s
