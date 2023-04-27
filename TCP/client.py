@@ -4,7 +4,6 @@ from socket import *
 # server_name = "150.162.244.37"
 server_name = "192.168.0.103"
 server_port = 9000
-timeout = 10
 
 print("Bem vindo ao Cliente TCP!\n")
 
@@ -16,7 +15,6 @@ if (i): server_port = i
 
 try:
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.settimeout(timeout)
     client_socket.connect((server_name, server_port))
     print("Conexão estabelecida com o servidor!")
 except Exception as e:
@@ -49,15 +47,14 @@ while True:
                 if msg_receive:
                     print("Mensagem enviada!")
                     print("Mensagem recebida do servidor: ", msg_receive.decode('utf-8'))
-            except timeout:
-                print("Tempo limite excedido")
             except Exception as e:
                 print("Erro ao enviar/receber mensagem!", e)
 
     elif option == "2":
         msg_receive = client_socket.recv(4096)
         num_client = int(msg_receive.decode('utf-8'))
-        print("Meu número cliente:\n", num_client + 1)
+        print("Meu número cliente:", num_client + 1, "\n")
+        print("\nChat Iniciado!\n")
         
         while True:
             try:
