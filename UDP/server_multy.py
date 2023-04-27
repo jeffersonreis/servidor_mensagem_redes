@@ -34,7 +34,7 @@ while True:
 
         # Envia dados para o cliente 2
         serv.sendto(data, list_clients[1])
-        print(f"Enviei a data para o cliente 2")
+        print(f"Enviei a data para o cliente 2\n")
 
         # Aguarda resposta do cliente 2
         data, addr = serv.recvfrom(4096)
@@ -42,7 +42,7 @@ while True:
 
         # Envia dados para o cliente 1
         serv.sendto(data, list_clients[0])
-        print(f"Enviei a data para o cliente 1")
+        print(f"Enviei a data para o cliente 1\n")
 
     except Exception as e:
         print("Erro no servidor")
