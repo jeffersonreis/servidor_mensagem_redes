@@ -11,11 +11,14 @@ i = input("Entre com a porta (Enter para padrão): ")
 if (s): server_name = s
 if (i): server_port = i
 
-client_socket = socket(AF_INET, SOCK_DGRAM)
-client_socket.settimeout(timeout)
-
-print("Servidor Configurado!")
-
+try:
+  client_socket = socket(AF_INET, SOCK_DGRAM)
+  client_socket.settimeout(timeout)
+  print("Conexão estabelecida com o servidor!")
+except:
+    print("Erro ao conectar com o servidor!")
+    client_socket.close()
+    exit()
 
 option_label = """
 Escolha uma dessas opções:

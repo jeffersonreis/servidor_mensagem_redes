@@ -1,18 +1,29 @@
 from socket import *
 
+server_name = "localhost"
+server_port = 9000
+
+print("Bem vindo ao Servidor TCP!\n")
+
+s = input("Entre com o IP do servidor (Enter para localhost): ")
+i = input("Entre com a porta (Enter para padrão): ")
+
+if (s): server_name = s
+if (i): server_port = i
+
 serv = socket(AF_INET, SOCK_STREAM)
-serv.bind(('localhost', 9000))
+serv.bind((server_name, server_port))
 serv.listen(5)
 
+print('\nServidor aguardando!\n')
+conn, client_address = serv.accept()
+print(f"Conexão estabelecida com o endereço {client_address}")
 while True:
     try:
-        print('\nServidor escutando!')
-        conn, client_address = serv.accept()
-        print(f"Conexão estabelecida com o endereço {client_address}")
         data = conn.recv(4096)
-        print(f"Recebi a data: '{data.decode('utf-8')}'")
-        conn.sendall(b"Mensagem recebida pelo servidor!\n")
-        conn.close()
+        print(f"Recebi a data: '{data.decode('utf-8')}'\n")
+        conn.sendall(b"Recebi sua mensagem!\n")
     except:
         print("Erro no servidor")
+        conn.close()
         exit()

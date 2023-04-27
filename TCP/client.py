@@ -8,17 +8,12 @@ print("Bem vindo ao Cliente TCP!\n")
 s = input("Entre com o IP do servidor (Enter para localhost): ")
 i = input("Entre com a porta (Enter para padrão): ")
 
-if s:
-    server_name = s
-if i:
-    server_port = int(i)
-
-client_socket = socket(AF_INET, SOCK_STREAM)
-client_socket.settimeout(timeout)
-
-print("Servidor Configurado!")
+if (s): server_name = s
+if (i): server_port = i
 
 try:
+    client_socket = socket(AF_INET, SOCK_STREAM)
+    client_socket.settimeout(timeout)
     client_socket.connect((server_name, server_port))
     print("Conexão estabelecida com o servidor!")
 except:
